@@ -8,10 +8,10 @@ public class Words
 
 	public Words()
 	{
-
+		wordList = new ArrayList<Word>();
 	}
 
-	public Words(String s)
+	public Words(String s) // After 45 minutes 
 	{
 
 	}
