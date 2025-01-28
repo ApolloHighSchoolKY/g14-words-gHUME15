@@ -11,14 +11,27 @@ public class Words
 		wordList = new ArrayList<Word>();
 	}
 
-	public Words(String s) // After 45 minutes 
+	public Words(String s)
 	{
+		wordList = new ArrayList<Word>();
 
+		setWords(s);
 	}
 
 	public void setWords(String s)
 	{
+
+		wordList.clear();
+		
+		Scanner bob = new Scanner(s);
 		//Create a Scanner for the list of words in the string "s"
+		
+		
+
+		while(bob.hasNext())
+		{
+		wordList.add(new Word(bob.next()));
+		}
 
 
 		//Continue to loop while there are more words to read
@@ -33,9 +46,10 @@ public class Words
 		int count=0;
 
 		//for every Word in the ArrayList "wordList"
-
+		for(Word word : wordList)
 			//if the length of the "theWord" is the same as the parameter "size"
-
+		if(word.getLength() == size)
+		count++;
 		return count;
 	}
 
@@ -46,9 +60,13 @@ public class Words
 		int vowelCount = 0;
 
 		//for each Word in the ArrayList "words" loop
-
+		for(int i=wordList.size()-1; i >=0 ; i--)
 			//if the Word has "size" characters
-
+			if(wordList.get(i).getLength()== size)
+			{
+			vowelCount += wordList.get(i).getNumVowels();
+			wordList.remove(i);
+			}
 
 		return vowelCount;
 	}
@@ -58,15 +76,15 @@ public class Words
 		int count=0;
 
 		//for every Word in the ArrayList "words"
-
+		for(Word word : wordList)
 			//if the number of vowels in "theWord" is the same as the parameter "numVowels"
-
-
+			if(word.getNumVowels()== numVowels)
+				count ++;
 		return count;
 	}
 
 	public String toString()
 	{
-	   return "";
+	   return  "" + wordList;
 	}
 }
